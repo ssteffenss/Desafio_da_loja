@@ -3,19 +3,19 @@ const chaveProdutos = 'PRODUTOS'; // key para uso no localstorage
 function cargaInicial() {
   var valores = [
     {
-      url: 'https://media.istockphoto.com/photos/running-shoes-picture-id1249496770?k=20&m=1249496770&s=612x612&w=0&h=GR8ow3G0QWgkuhYPyEafoL5TMdAgzJvc7rxgOahqxO4=',
-      titulo: 'Tênis 1',
-      descricao: 'Tênis confortável para caminhada'
+      url: 'https://m.media-amazon.com/images/I/51XH6GpdFOL._AC_SX569_.jpg',
+      titulo: 'camisa 1',
+      descricao: 'camisa social'
     },
     {
-      url: 'https://media.istockphoto.com/photos/sport-shoes-on-isolated-white-background-picture-id956501428?k=20&m=956501428&s=612x612&w=0&h=UC4qdZa2iA0PJvv0RIBlJDyF80wxFyLPq4YWvZa30Sc=',
-      titulo: 'Tênis 2',
-      descricao: 'Tênis confortável para corrida'
+      url: 'https://m.media-amazon.com/images/I/41Un2s4JHlL._AC_SX569_.jpg',
+      titulo: 'camisa 2',
+      descricao: 'camisa confortável para corrida'
     },
     {
-      url: 'https://images.freeimages.com/images/small-previews/5af/sport-shoes-1417482.jpg',
-      titulo: 'Tênis 3',
-      descricao: 'Sapato esportivo'
+      url: 'https://m.media-amazon.com/images/I/51-UttW1UTL._AC_SX679_.jpg',
+      titulo: 'camisa 3',
+      descricao: 'camisa esportiva'
     }
   ];
 
@@ -26,6 +26,9 @@ function cargaInicial() {
 function mostraValores() {
   var valores = localStorage.getItem(chaveProdutos); // pega os valores como string no localstorage
   valores = JSON.parse(valores); // converte a string em array
+
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
 
   valores.forEach((valor) => { // para cara registro no array executa o processo abaixo
     const divCard = document.createElement('div'); // cria uma div
@@ -67,6 +70,20 @@ function cadastrar() {
     descricao,
     url,
   }
+
+  var valores = localStorage.getItem(chaveProdutos); // pega os valores como string no localstorage
+  valores = JSON.parse(valores); // converte a string em array
+
+  if (!valores) {
+    valores = [];
+  }
+
+  valores.push(produto);
+
+  valores = JSON.stringify(valores);
+ 
+  localStorage.setItem(chaveProdutos, valores);
+  location.href="index.html"
 
   var valores = localStorage.getItem(chaveProdutos); // pega os valores como string no localstorage
   valores = JSON.parse(valores); // converte a string em array
